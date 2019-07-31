@@ -1,0 +1,17 @@
+name: add-ssh-agent-key
+version: 1.0.1
+summary: Add an SSH key from environment variables to SSH agent
+category: imported
+tags:
+- ssh
+- ssh-agent
+- ssh-add
+properties:
+- name: passphrase
+  type: string
+  required: false
+  default: ""
+- name: key
+  type: string
+  required: true
+  default: ""
