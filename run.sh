@@ -4,7 +4,7 @@ KEY_TEMP=$(mktemp)
 KEY=$(eval echo "\$${WERCKER_ADD_SSH_AGENT_KEY_KEY}")
 
 # Check if SSH key is empty
-if [ "${KEY}" == "$" -o -z "${KEY}" ]; then
+if [ "${KEY}" == "$" ] || [ -z "${KEY}" ]; then
     echo "SSH key is empty, no keys will be added."
 fi
 
