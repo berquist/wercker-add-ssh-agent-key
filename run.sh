@@ -33,6 +33,7 @@ fi
 # Install expect if needed
 command -v expect > /dev/null
 if [ "$?" -ne 0 ]; then
+    apt-get -y update
     apt-get -y install expect
 fi
 
