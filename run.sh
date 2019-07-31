@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# can't do -u due to Wercker vars
+set -eo pipefail
+
 KEY_TEMP=$(mktemp)
 KEY=$(eval echo "\$${WERCKER_ADD_SSH_AGENT_KEY_KEY}")
 
@@ -28,7 +31,7 @@ if [ -n "${WERCKER_ADD_SSH_AGENT_KEY_PASSPHRASE}" ]; then
 fi
 
 # Install expect if needed
-which expect > /dev/null
+command -v expect > /dev/null
 if [ "$?" -ne 0 ]; then
     apt-get -y install expect
 fi

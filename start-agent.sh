@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -eo pipefail
+
 ssh-add -l &>/dev/null
 if [ "$?" -eq 2 ]; then
     test -r ~/.ssh/env && . ~/.ssh/env >/dev/null
