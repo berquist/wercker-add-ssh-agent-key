@@ -1,5 +1,5 @@
 name: add-ssh-agent-key
-version: 1.0.3
+version: 1.0.4
 description: Add an SSH key from environment variables to SSH agent
 
 keywords:

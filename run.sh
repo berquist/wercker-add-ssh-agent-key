@@ -31,8 +31,7 @@ if [ -n "${WERCKER_ADD_SSH_AGENT_KEY_PASSPHRASE}" ]; then
 fi
 
 # Install expect if needed
-command -v expect > /dev/null
-if [ "$?" -ne 0 ]; then
+if [[ $(command -v expect > /dev/null) ]]; then
     apt-get -y update
     apt-get -y install expect
 fi
