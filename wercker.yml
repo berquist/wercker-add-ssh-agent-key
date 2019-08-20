@@ -2,6 +2,11 @@ box: alpine
 
 build:
   steps:
+    - script:
+        name: install expect
+        code: |
+            apk update
+            apk add expect
     - berquist/add-ssh-agent-key:
         key: FLEXNLP_MODELS_PRIVATE
 
