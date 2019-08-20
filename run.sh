@@ -2,7 +2,6 @@
 
 # can't do -u due to Wercker vars
 set -eo pipefail
-set -x
 
 KEY_TEMP=$(mktemp)
 KEY=$(eval echo "\$${WERCKER_ADD_SSH_AGENT_KEY_KEY}")
