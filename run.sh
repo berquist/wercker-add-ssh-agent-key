@@ -1,13 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 # can't do -u due to Wercker vars
-set -eo pipefail
+# can't do -o pipefail due to POSIX
+set -e
 
 KEY_TEMP=$(mktemp)
 KEY=$(eval echo "\$${WERCKER_ADD_SSH_AGENT_KEY_KEY}")
 
 # Check if SSH key is empty
-if [ "${KEY}" == "$" ] || [ -z "${KEY}" ]; then
+if [ "${KEY}" = "$" ] || [ -z "${KEY}" ]; then
     echo "SSH key is empty, no keys will be added."
 fi
 
@@ -15,7 +16,7 @@ fi
 echo "${KEY}" > "${KEY_TEMP}"
 
 # Check for SSH agent or start one
-source "${WERCKER_STEP_ROOT}/start-agent.sh"
+. "${WERCKER_STEP_ROOT}/start-agent.sh"
 
 # Source SSH agent env every step
 tail -n +2 "${WERCKER_STEP_ROOT}/start-agent.sh" >> ~/.bashrc
@@ -25,13 +26,13 @@ if [ -n "${WERCKER_ADD_SSH_AGENT_KEY_PASSPHRASE}" ]; then
     KEY_PASS=$(eval "echo \$${WERCKER_ADD_SSH_AGENT_KEY_PASSPHRASE}")
 
     # Check if passphrase is empty
-    if [ "${KEY_PASS}" == "$" ]; then
+    if [ "${KEY_PASS}" = "$" ]; then
         KEY_PASS=""
     fi
 fi
 
 # Install expect if needed (Debian and Ubuntu)
-if [[ $(command -v expect > /dev/null) ]]; then
+if [ `command -v expect > /dev/null` ]; then
     apt-get -y update
     apt-get -y install expect
 fi
