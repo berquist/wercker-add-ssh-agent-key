@@ -1,5 +1,7 @@
 #!/bin/sh
 
+printf "I'm running, I'm running!\n"
+
 # can't do -u due to Wercker vars
 # can't do -o pipefail due to POSIX
 set -e
