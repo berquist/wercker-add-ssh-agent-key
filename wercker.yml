@@ -8,8 +8,12 @@ build:
             apk update
             apk add expect
             apk add openssh
-    - berquist/add-ssh-agent-key:
-        key: FLEXNLP_MODELS_PRIVATE
+    # - berquist/add-ssh-agent-key:
+    #     key: FLEXNLP_MODELS_PRIVATE
+    - script:
+        name: direct run example
+        code: |
+            source ./run.sh
 
 publish:
   steps:
