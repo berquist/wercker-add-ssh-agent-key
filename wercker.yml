@@ -13,11 +13,11 @@ build:
     - script:
         name: direct run example
         code: |
-            echo "=== ENVIRONMENT VARIABLES ==="
-            env | awk -F '=' '{print $1}' | sort -u
-            echo "============================="
+            # echo "=== ENVIRONMENT VARIABLES ==="
+            # env | awk -F '=' '{print $1}' | sort -u
+            # echo "============================="
             export WERCKER_ADD_SSH_AGENT_KEY_KEY="${FLEXNLP_MODELS_PRIVATE}"
-            source ${WERCKER_STEP_ROOT}/run.sh
+            source ./run.sh
 
 publish:
   steps:
