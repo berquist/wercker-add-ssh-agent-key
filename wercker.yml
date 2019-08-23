@@ -17,7 +17,7 @@ build:
             # env | awk -F '=' '{print $1}' | sort -u
             # echo "============================="
             export WERCKER_ADD_SSH_AGENT_KEY_KEY="${FLEXNLP_MODELS_PRIVATE}"
-            source ./run.sh
+            WERCKER_STEP_ROOT=${WERCKER_SOURCE_DIR} source ./run.sh
 
 publish:
   steps:
